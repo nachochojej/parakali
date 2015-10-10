@@ -186,8 +186,8 @@ namespace ParaKalista
         {
             // All circles
             foreach (var spell in SpellManager.AllSpells)
-                Hellsing.Kalista.DamageIndicator.HealthbarEnabled = Config.Drawing.IndicatorHealthbar;
-            Hellsing.Kalista.DamageIndicator.PercentEnabled = Config.Drawing.IndicatorPercent;
+            Hellsing.Kalista.DamageIndicator.HealthbarEnabled = Hellsing.Kalista.Config.Drawing.IndicatorHealthbar;
+            Hellsing.Kalista.DamageIndicator.PercentEnabled = Hellsing.Kalista.Config.Drawing.IndicatorPercent;
         }
     }
 }

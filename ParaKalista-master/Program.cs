@@ -17,8 +17,8 @@ namespace ParaKalista
         static Menu Kalistamenu;
         static readonly Item botrk = new Item((int)ItemId.Blade_of_the_Ruined_King, 550f);
         static readonly Item bc = new Item((int)ItemId.Bilgewater_Cutlass, 550f);
-        static void Loading_OnLoadingComplete(EventArgs args);
-        DamageIndicator.Initialize(Damages.GetRendDamage)
+        static void Loading_OnLoadingComplete(EventArgs args)
+
         {
             Q=new Spell.Skillshot(SpellSlot.Q,1200,SkillShotType.Linear,250,1700,40);
             Q.AllowedCollisionCount=0;
@@ -27,14 +27,15 @@ namespace ParaKalista
             Kalistamenu=MainMenu.AddMenu("Kalista","kalista");
             Kalistamenu.Add("combo",new KeyBind("Combo",false,KeyBind.BindTypes.HoldActive,' '));
             Kalistamenu.AddSeparator();
-            Kalistamenu.Add("useq",new CheckBox("Use Q In Combo"));
+            Kalistamenu.Add("useq",new CheckBox("Usar q en combo"));
             Kalistamenu.AddSeparator();
-            Kalistamenu.Add("combo2",new CheckBox("Orb Mode 2 - Fly hack | exploit if > 2.0 attack speed [ care ez ban ]", false));
+            Kalistamenu.Add("combo2",new CheckBox("fly hack", false));
             Kalistamenu.AddSeparator();
-            Kalistamenu.Add("aad",new CheckBox("Attack Range"));
+            Kalistamenu.Add("aad",new CheckBox("Rango de Ataque"));
             Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
             Game.OnTick += On_Tick;
             Drawing.OnDraw += Drawing_OnDraw;
+            DamageIndicator.Initialize(Damages.GetRendDamage);
         }
 
         static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
@@ -183,9 +184,9 @@ namespace ParaKalista
         }
         private static void OnDraw(EventArgs args)
         {
-        // All circles
+            // All circles
             foreach (var spell in SpellManager.AllSpells)
-            DamageIndicator.HealthbarEnabled = Config.Drawing.IndicatorHealthbar;
+                DamageIndicator.HealthbarEnabled = Config.Drawing.IndicatorHealthbar;
             DamageIndicator.PercentEnabled = Config.Drawing.IndicatorPercent;
         }
     }

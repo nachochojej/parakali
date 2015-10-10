@@ -18,6 +18,7 @@ namespace ParaKalista
         static readonly Item botrk = new Item((int)ItemId.Blade_of_the_Ruined_King, 550f);
         static readonly Item bc = new Item((int)ItemId.Bilgewater_Cutlass, 550f);
         static void Loading_OnLoadingComplete(EventArgs args)
+        DamageIndicator.Initialize(Damages.GetRendDamage)
         {
             Q=new Spell.Skillshot(SpellSlot.Q,1200,SkillShotType.Linear,250,1700,40);
             Q.AllowedCollisionCount=0;
@@ -179,6 +180,13 @@ namespace ParaKalista
                     }
                 }
             }
+        }
+        private static void OnDraw(EventArgs args)
+        {
+        // All circles
+            foreach (var spell in SpellManager.AllSpells)
+            DamageIndicator.HealthbarEnabled = Config.Drawing.IndicatorHealthbar;
+            DamageIndicator.PercentEnabled = Config.Drawing.IndicatorPercent;
         }
     }
 }

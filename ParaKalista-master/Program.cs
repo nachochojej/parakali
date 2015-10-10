@@ -35,7 +35,7 @@ namespace ParaKalista
             Obj_AI_Base.OnBasicAttack += Obj_AI_Base_OnBasicAttack;
             Game.OnTick += On_Tick;
             Drawing.OnDraw += Drawing_OnDraw;
-            DamageIndicator.Initialize(Damages.GetRendDamage);
+            Hellsing.Kalista.DamageIndicator.Initialize(Damages.GetRendDamage);
         }
 
         static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
@@ -186,8 +186,8 @@ namespace ParaKalista
         {
             // All circles
             foreach (var spell in SpellManager.AllSpells)
-                DamageIndicator.HealthbarEnabled = Config.Drawing.IndicatorHealthbar;
-            DamageIndicator.PercentEnabled = Config.Drawing.IndicatorPercent;
+                Hellsing.Kalista.DamageIndicator.HealthbarEnabled = Config.Drawing.IndicatorHealthbar;
+            Hellsing.Kalista.DamageIndicator.PercentEnabled = Config.Drawing.IndicatorPercent;
         }
     }
 }
